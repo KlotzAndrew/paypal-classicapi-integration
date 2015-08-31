@@ -1,0 +1,8 @@
+<h1>Tickets#=p</h1>
+<p>Find me in app/views/tickets/=p.html.erb</p>
+
+<%= form_for @ticket do |f|  %>
+	<%= f.label :name %><br>
+    <%= f.text_field :name, size: 40 %>
+     <%= f.submit "HIT ME" %>
+ <% end %>

@@ -1,0 +1,3 @@
+<%= @ticket.inspect %>
+
+<h1> <%= Ticket.all.where(status: "Completed").count %>/<%= Ticket.all.count  %></h1>
