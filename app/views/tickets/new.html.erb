@@ -1,8 +1,16 @@
-<h1>Tickets#=p</h1>
-<p>Find me in app/views/tickets/=p.html.erb</p>
+<h1>Tickets</h1>
 
 <%= form_for @ticket do |f|  %>
 	<%= f.label :name %><br>
     <%= f.text_field :name, size: 40 %>
-     <%= f.submit "HIT ME" %>
+    <%= f.submit "Controller submited, not encrypted" %>
  <% end %>
+
+
+<%= form_tag "https://www.paypal.com/cgi-bin/webscr" do %>
+  <%= hidden_field_tag :cmd, "_s-xclick" %>
+  <%= hidden_field_tag :encrypted, @ticket.paypal_encrypted(root_url, root_url) %>
+  <p><%= submit_tag "Form submit, encrypted" %></p>
+<% end %>
+
+<%= Rails.application.secrets  %>
