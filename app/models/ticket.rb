@@ -3,7 +3,7 @@ class Ticket < ActiveRecord::Base
 	# serialize :notification_params, Hash
 	def paypal_url(return_path, root_url)
 		values = { 
-		:business => 'agc.klotz@gmail.com',
+		:business => Rails.application.secrets.paypal_email,
 		:cmd => '_cart',
 		:upload => 1,
 		:return => root_url + return_path,
@@ -23,7 +23,7 @@ class Ticket < ActiveRecord::Base
 
 	def paypal_encrypted(return_url, notify_url)
 	  values = {
-	    :business => 'agc.klotz@gmail.com',
+	    :business => Rails.application.secrets.paypal_email,
 	    :cmd => '_cart',
 	    :upload => 1,
 	    :return => return_url,
